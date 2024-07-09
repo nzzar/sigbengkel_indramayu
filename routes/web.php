@@ -23,8 +23,12 @@ use App\Http\Controllers\Admin\SparepartController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::get('/peta', [HomeController::class, 'peta'])->name('peta');
+
 Route::get('/bengkel', [HomeController::class, 'bengkel'])->name('bengkel');
 Route::get('/bengkel/{id}', [HomeController::class, 'detail_bengkel'])->name('detail-bengkel');
+
+Route::get('/sparepart', [HomeController::class, 'sparepart'])->name('sparepart');
+Route::get('/sparepart/{id}', [HomeController::class, 'sparepart_bengkel'])->name('sparepart-bengkel');
 
 /* Login */
 Route::get('/login', [LoginController::class, 'index'])->name('login');

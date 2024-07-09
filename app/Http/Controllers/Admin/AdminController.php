@@ -4,17 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Bengkel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function dashboard(){
         // dd(auth()->user()->getRoleNames());
+        $pemilik = Auth::user();
 
-        return view('admin.dashboard');
+        return view('admin.dashboard', compact('pemilik'));
+    }
+
+    public function hitung_jumlah()
+    {
+    $jumlahUser = User::count();
+    $jumlahBengkel = Bengkel::count();
+    return view('admin.dashboard', compact('jumlahUser', 'jumlahBengkel'));
     }
 
     public function pemilik(){

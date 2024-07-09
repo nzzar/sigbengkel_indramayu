@@ -12,7 +12,8 @@
                         <p class="card-text">{{ $d->adress }}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-around">
-                        <a href="" class="btn btn-primary"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        <a onclick="openMaps({{ $d->latitude }}, {{ $d->longitude }})" class="btn btn-primary"><i class="fa-solid fa-location-dot"></i> Maps</a>
+                        {{-- <button onclick="openMaps(-6.50231244, 108.43724299)" class="btn btn-primary"> --}}
                         <a href="{{ route('detail-bengkel', ['id' => $d->id]) }}" class="btn btn-primary">Lihat Detail</a>
                     </div>
                 </div>
@@ -21,5 +22,23 @@
         </div>
     </div>
 </section>
+
+<script>
+    function openMaps(destinationLat, destinationLng) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var originLat = position.coords.latitude;
+                var originLng = position.coords.longitude;
+                var mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${originLat},${originLng}&destination=${destinationLat},${destinationLng}&travelmode=motorcycle`;
+                window.open(mapsUrl, '_blank');
+            }, function (error) {
+                alert('Geolocation gagal: ' + error.message);
+            });
+        } else {
+            alert('Geolocation tidak didukung oleh browser ini.');
+        }
+    }
+</script>
+
 
 <!-- Bengkel -->

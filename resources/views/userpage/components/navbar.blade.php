@@ -79,11 +79,11 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('peta-active')" style="color: white;"
-                            href="{{ route('home') }}#peta">Peta</a>
+                            href="{{ route('sparepart') }}#sparepart">Sparepart</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('bengkel-active')" style="color: white;"
-                            href="{{ route('home') }}#bengkel">Bengkel</a>
+                            href="#jasa">Jasa</a>
                     </li>
                 </ul>
                 @if(auth()->check())

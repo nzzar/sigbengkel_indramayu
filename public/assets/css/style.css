@@ -142,6 +142,24 @@ body{
     object-position: center;
 } */
 
+/* Sparepart */
+.small-card {
+    max-width: 300px; /* Ukuran card maksimal */
+    margin: auto; /* Centering card */
+}
+.small-card .card-body {
+    padding: 1rem; /* Padding body card */
+}
+.small-card .card-title {
+    font-size: 1.2rem; /* Ukuran font judul */
+}
+.small-card hr {
+    margin-top: 0; /* Jarak dari atas */
+    margin-bottom: 10px; /* Jarak dari bawah */
+    border: 0; /* Garis dihapus */
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Warna dan ketebalan garis */
+}
+
 
 /* Profile */
 .container-profile {

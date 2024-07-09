@@ -24,6 +24,7 @@
     <link href="{{ asset('lte/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('lte/assets/css/corporate-ui-dashboard.css?v=1.0.0') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -46,7 +47,7 @@
                         <ul class="navbar-nav  justify-content-end">
                             <li class="nav-item ps-2 d-flex align-items-center">
                                 <a href="javascript:;" class="nav-link text-body p-0">
-                                    <img src="{{ asset('lte/assets/img/team-2.jpg') }}" class="avatar avatar-sm"
+                                    <img src="{{ asset('storage/photo-user/' . Auth::user()->image) }}" class="avatar avatar-sm"
                                         alt="avatar" />
                                 </a>
                             </li>
@@ -87,13 +88,13 @@
                             <table class="table align-items-center justify-content-center mb-0">
                                 <thead class="bg-gray-100">
                                     <tr>
-                                        <th>No</th>
+                                        <th class="text-center">No</th>
                                         <th>Nama Bengkel</th>
                                         <th>Deskripsi</th>
                                         <th>Alamat</th>
                                         <th>Telepon</th>
-                                        <th>longitude</th>
-                                        <th>latitude</th>
+                                        <th>Longitude</th>
+                                        <th>Latitude</th>
                                         <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -101,20 +102,17 @@
                                 <tbody>
                                     @foreach ($data as $d)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
                                             <td>{{ $d->title }}</td>
                                             <td>{{ $d->description_bengkel }}</td>
                                             <td>{{ $d->adress }}</td>
                                             <td>{{ $d->telepon }}</td>
                                             <td>{{ $d->longitude }}</td>
                                             <td>{{ $d->latitude }}</td>
-                                            <td><img src="{{ asset('storage/photo-bengkel/' . $d->image) }}"
-                                                    class="img-fluid" width="100"></td>
+                                            <td><img src="{{ asset('storage/photo-bengkel/' . $d->image) }}" class="img-fluid" width="100"></td>
                                             <td>
-                                                <a href="{{ route('admin.bengkel.edit',['id' => $d->id]) }}" class="btn btn-warning"><i
-                                                        class="fas fa-edit"></i>Edit</a>
-                                                <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i
-                                                        class="fas fa-trash"></i>Hapus</a>
+                                                <a href="{{ route('admin.bengkel.edit',['id' => $d->id]) }}" class="btn btn-warning"><i class="fas fa-edit"></i>Edit</a>
+                                                <a data-toggle="modal" data-target="#modal-hapus{{ $d->id }}" class="btn btn-danger"><i class="fas fa-trash"></i>Hapus</a>
                                             </td>
                                         </tr>
                                         <div class="modal fade" id="modal-hapus{{ $d->id }}">
@@ -122,26 +120,19 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Konfirmasi Hapus</h5>
-                                                        <button type="button" class="btn-close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Apakah Anda yakin ingin menghapus data
-                                                            <b>{{ $d->title }}</b> ini?
-                                                        </p>
+                                                        <p>Apakah Anda yakin ingin menghapus data <b>{{ $d->title }}</b> ini?</p>
                                                     </div>
                                                     <div class="modal-footer justify-content-between">
-                                                        <form
-                                                            action="{{ route('admin.bengkel.delete', ['id' => $d->id]) }}"
-                                                            method="POST">
+                                                        <form action="{{ route('admin.bengkel.delete', ['id' => $d->id]) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Batal</button>
-                                                            <button type="submit"
-                                                                class="btn btn-danger">Hapus</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -155,44 +146,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer pt-3  ">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                        <div class="copyright text-center text-xs text-muted text-lg-start">
-                            Copyright
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            Corporate UI by
-                            <a href="https://www.creative-tim.com" class="text-secondary" target="_blank">Creative
-                                Tim</a>.
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link text-xs text-muted"
-                                    target="_blank">Creative Tim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation"
-                                    class="nav-link text-xs text-muted" target="_blank">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/blog" class="nav-link text-xs text-muted"
-                                    target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/license"
-                                    class="nav-link text-xs pe-0 text-muted" target="_blank">License</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        @include('admin.components.footeradm')
         </div>
     </main>
 

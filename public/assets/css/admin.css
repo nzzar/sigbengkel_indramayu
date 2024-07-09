@@ -1,0 +1,21 @@
+.table th,
+.table td {
+    text-align: center;
+    /* Mengatur agar teks pada kolom berada di tengah */
+    vertical-align: middle;
+    /* Mengatur agar teks vertikal berada di tengah */
+}
+
+.table img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-footer .btn {
+    margin: 0 5px;
+}

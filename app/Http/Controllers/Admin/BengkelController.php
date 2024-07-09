@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class BengkelController extends Controller
 {
-    
+
     public function nearby(Request $request)
     {
         $latitude = $request->input('latitude');
@@ -40,7 +40,7 @@ class BengkelController extends Controller
     }
 
     public function store(Request $request)
-{
+    {
     $validator = Validator::make($request->all(), [
         'title' => 'required',
         'description_bengkel' => 'required',

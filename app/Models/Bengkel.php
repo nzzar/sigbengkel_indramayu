@@ -19,4 +19,11 @@ class Bengkel extends Model
         'latitude',
         'image',
     ];
+
+    public function spareparts()
+    {
+        return $this->hasMany(Sparepart::class);
+    }
 }
+
+

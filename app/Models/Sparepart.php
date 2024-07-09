@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Sparepart;
 
 class Sparepart extends Model
 {
@@ -17,4 +16,9 @@ class Sparepart extends Model
         'description',
         'image'
     ];
+
+    public function bengkel()
+    {
+        return $this->belongsTo(Bengkel::class);
+    }
 }

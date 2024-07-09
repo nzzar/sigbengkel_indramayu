@@ -39,7 +39,7 @@
                     <p>Telepon: {{ $data->telepon }}</p>
                 </div>
                 <div class="mt-3">
-                    <button class="btn btn-primary w-50 mb-2">Sparepart</button>
+                    <a href="{{ route('sparepart-bengkel', $data->id) }}" class="btn btn-primary w-50 mb-2">Sparepart</a>
                     <button class="btn btn-secondary w-50">Jasa</button>
 
                     <h3 class="text-center mt-5">Peta {{ $data->title }}</h3>
@@ -52,6 +52,7 @@
             </div>
         </div>
     </section>
+
 
 
     @include('userpage.components.footer')

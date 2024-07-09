@@ -95,7 +95,7 @@
             var distance = getDistance(userLat, userLon, d.latitude, d.longitude);
             if (distance <= 5) {
                 L.marker([d.latitude, d.longitude], {icon: customIcon})
-                    .bindPopup("<b>" + d.title + "</b>")
+                .bindPopup("<b>" + d.title + "</b><br><a href=\"/bengkel/" + d.id + "\">Detail</a>")
                     .addTo(map);
             }
         });
